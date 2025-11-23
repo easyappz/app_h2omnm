@@ -1,0 +1,72 @@
+register:
+  post:
+    summary: Register new user
+    tags:
+      - Authentication
+    security: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/register_request.yml'
+    responses:
+      '201':
+        description: User successfully registered
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/token_response.yml'
+      '400':
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+
+login:
+  post:
+    summary: Login user
+    tags:
+      - Authentication
+    security: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/login_request.yml'
+    responses:
+      '200':
+        description: Login successful
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/token_response.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+
+me:
+  get:
+    summary: Get current user
+    tags:
+      - Authentication
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: Current user info
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/member.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'

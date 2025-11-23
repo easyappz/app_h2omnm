@@ -1,0 +1,51 @@
+profile:
+  get:
+    summary: Get current user profile
+    tags:
+      - Profile
+    security:
+      - BearerAuth: []
+    responses:
+      '200':
+        description: User profile
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/member.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+  put:
+    summary: Update current user profile
+    tags:
+      - Profile
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/profile_update_request.yml'
+    responses:
+      '200':
+        description: Profile updated successfully
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/member.yml'
+      '400':
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'

@@ -1,0 +1,12 @@
+type: object
+required:
+  - username
+  - password
+properties:
+  username:
+    type: string
+    example: "john_doe"
+  password:
+    type: string
+    format: password
+    example: "password123"

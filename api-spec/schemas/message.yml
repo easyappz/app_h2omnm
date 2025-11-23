@@ -1,0 +1,26 @@
+type: object
+required:
+  - id
+  - author_id
+  - author_username
+  - text
+  - created_at
+properties:
+  id:
+    type: integer
+    format: int64
+    example: 1
+  author_id:
+    type: integer
+    format: int64
+    example: 1
+  author_username:
+    type: string
+    example: "john_doe"
+  text:
+    type: string
+    example: "Hello everyone!"
+  created_at:
+    type: string
+    format: date-time
+    example: "2025-11-23T20:00:00Z"

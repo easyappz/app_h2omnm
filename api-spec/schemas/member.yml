@@ -1,0 +1,17 @@
+type: object
+required:
+  - id
+  - username
+  - created_at
+properties:
+  id:
+    type: integer
+    format: int64
+    example: 1
+  username:
+    type: string
+    example: "john_doe"
+  created_at:
+    type: string
+    format: date-time
+    example: "2025-11-23T20:00:00Z"

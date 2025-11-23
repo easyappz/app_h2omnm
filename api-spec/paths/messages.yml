@@ -1,0 +1,69 @@
+messages:
+  get:
+    summary: Get list of chat messages
+    tags:
+      - Chat
+    security:
+      - BearerAuth: []
+    parameters:
+      - name: limit
+        in: query
+        schema:
+          type: integer
+          minimum: 1
+          maximum: 100
+          default: 50
+        required: false
+      - name: offset
+        in: query
+        schema:
+          type: integer
+          minimum: 0
+          default: 0
+        required: false
+    responses:
+      '200':
+        description: List of messages
+        content:
+          application/json:
+            schema:
+              type: array
+              items:
+                $ref: '../schemas/message.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+  post:
+    summary: Send message to chat
+    tags:
+      - Chat
+    security:
+      - BearerAuth: []
+    requestBody:
+      required: true
+      content:
+        application/json:
+          schema:
+            $ref: '../schemas/message_request.yml'
+    responses:
+      '201':
+        description: Message sent successfully
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/message.yml'
+      '400':
+        description: Bad request
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'
+      '401':
+        description: Unauthorized
+        content:
+          application/json:
+            schema:
+              $ref: '../schemas/error_response.yml'

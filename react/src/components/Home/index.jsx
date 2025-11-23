@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 import { getMessages, sendMessage } from '../../api/messages';
 import './styles.css';
 
-export const Home = () => {
+const Home = () => {
   const navigate = useNavigate();
   const [messages, setMessages] = useState([]);
   const [newMessageText, setNewMessageText] = useState('');
@@ -112,8 +112,8 @@ export const Home = () => {
           messages.map((message) => (
             <div key={message.id} className="message-item">
               <div className="message-header">
-                <span className="message-author">{message.author}</span>
-                <span className="message-time">{formatTime(message.timestamp)}</span>
+                <span className="message-author">{message.author_username}</span>
+                <span className="message-time">{formatTime(message.created_at)}</span>
               </div>
               <div className="message-text">{message.text}</div>
             </div>
@@ -137,3 +137,5 @@ export const Home = () => {
     </div>
   );
 };
+
+export default Home;
